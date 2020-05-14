@@ -54,7 +54,7 @@ label start:
         scene bg fight with dissolve
         "we a fighting right now"
         #$rand = random.randint(0, 9)
-        $rand = 0
+        $rand = 1
         if rand == 0:
             show scelet at right
             python:
@@ -64,9 +64,19 @@ label start:
                 monster.messages[1] = "Минус ребра у скелета, лол"
                 monster.messages[2] = "Минус ноги, лол"
         elif rand == 1:
-            jump monster1
+            show monster1 at right
+            python:
+                monster = Enemy(50, 13, 15, [1.4, 1.2, 1.2])
+                monster.messages[0] = "Вы ударили мага в голову, лол"
+                monster.messages[1] = "Минус ребра у мага, лол"
+                monster.messages[2] = "Минус ноги, лол"
         elif rand == 2:
-            jump monster2
+            show monster2 at right
+            python:
+                monster = Enemy(100, 13, 15, [1.4, 1.2, 1.2])
+                monster.messages[0] = "Вы ударили мага в голову, лол"
+                monster.messages[1] = "Минус ребра у мага, лол"
+                monster.messages[2] = "Минус ноги, лол"
         elif rand == 3:
             jump monster3
         elif rand == 4:
@@ -126,7 +136,7 @@ label start:
         #put image of enemy
         "[rand]"
         jump endgame
-
+    
 
 
     label treasure:
