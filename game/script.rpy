@@ -16,7 +16,8 @@ screen info_hero:
     text _("HP: " + str(int(hero.hp)) + "%/" +  str(int(hero.max_hp)) + "%" ) pos(50, 250) size 36 color "#00fd" outlines [(2, "#fff8", 0, 0)]
     text _("Damage: " + str(int(hero.dmg))) pos(50, 300) size 36 color "#00fd" outlines [(2, "#fff8", 0, 0)]
     text _("Armor: " + str(int(hero.armor))) pos(50, 350) size 36 color "#00fd" outlines [(2, "#fff8", 0, 0)]
-
+screen name:
+    text _(NAMES[i, 0]+ ": " + str(NAMES[i,3])) pos (NAMES[i, 1], NAMES[i, 2]) size 40 color "00fd"
 label start:
 
     #init block
@@ -26,18 +27,18 @@ label start:
         import random
         hero = Player()
 
-    "ВСЕМ ПРИВЕТ В ЭТОМ ЧАТИКЕ"
     jump path_choose
 
     # This ends the game.
     label endgame:
         python:
-            name = renpy.input("Введите имя")
-        screen name:
             NAMES = [ ["1", 300, 300, 1500], ["2", 300, 350, 1000],["3", 300, 400, 100], ["4", 300, 350, 50] ]
-            for i in range(0, 4):
-                text _((NAMES[i, 0])+": " + NAMES[i,3]) pos (NAMES[i, 1], NAMES[i, 2]) size 40 color "00fd"
-        show screen name
+            name = renpy.input("Введите имя")
+        
+        $i = 0
+        while i < 4:
+            show screen name
+            $i += 1
         "Щёлкните для конца игры"
     return
 
