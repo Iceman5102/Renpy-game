@@ -253,7 +253,6 @@ screen quick_menu():
             xalign 0.5
             yalign 1.0
 
-            textbutton _("Back") action Rollback()
             textbutton _("Save") action ShowMenu('save')
             textbutton _("Prefs") action ShowMenu('preferences')
 

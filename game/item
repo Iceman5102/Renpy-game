@@ -1,0 +1,4 @@
+class Items:
+    max_hp_m = [5,10,15,20]
+    def item (type, str)
+    if (type == "common") 
