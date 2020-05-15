@@ -4,6 +4,7 @@
 # name of the character.
 
 # The game starts here.
+
 screen info:
     text _("HP: " + str(int(hero.hp)) + "%/" +  str(int(hero.max_hp)) + "%" ) pos(50, 250) size 36 color "#00fd" outlines [(2, "#fff8", 0, 0)]
     text _("Damage: " + str(int(hero.dmg))) pos(50, 300) size 36 color "#00fd" outlines [(2, "#fff8", 0, 0)]
@@ -30,6 +31,14 @@ label start:
 
     # This ends the game.
     label endgame:
+        python:
+            name = renpy.input("Введите имя")
+        screen name:
+            NAMES = [ ["1", 300, 300, 1500], ["2", 300, 350, 1000],["3", 300, 400, 100], ["4", 300, 350, 50] ]
+            for i in range(0, 4):
+                text _((NAMES[i, 0])+": " + NAMES[i,3]) pos (NAMES[i, 1], NAMES[i, 2]) size 40 color "00fd"
+        show screen name
+        "Щёлкните для конца игры"
     return
 
     #choose path, fight or treasure
@@ -43,8 +52,7 @@ label start:
                 "entering left door"
             "right door":
                 "entering right door"
-       # $rand = random.randint(0, 2)
-        $rand = 1
+        $rand = random.randint(0, 2)
         if( rand == 1 ):
             jump treasure
         else:
@@ -67,7 +75,7 @@ label start:
         elif rand == 1:
             show monster1 at right
             python:
-                monster = Enemy(50, 13, 15, [1.4, 1.2, 1.2])
+                monster = Enemy(50, 150, 15, [1.4, 1.2, 1.2])
                 monster.messages[0] = "Вы ударили мага в голову, лол"
                 monster.messages[1] = "Минус ребра у мага, лол"
                 monster.messages[2] = "Минус ноги, лол"
@@ -138,6 +146,7 @@ label start:
         "[rand]"
         jump endgame
         
+    
     
     label treasure:
         scene bg treasure with dissolve
