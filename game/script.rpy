@@ -17,7 +17,7 @@ screen info_hero:
     text _("Damage: " + str(int(hero.dmg))) pos(50, 300) size 36 color "#00fd" outlines [(2, "#fff8", 0, 0)]
     text _("Armor: " + str(int(hero.armor))) pos(50, 350) size 36 color "#00fd" outlines [(2, "#fff8", 0, 0)]
 screen name:
-    text _(NAMES[i, 0]+ ": " + str(NAMES[i,3])) pos (NAMES[i, 1], NAMES[i, 2]) size 40 color "00fd"
+    text _(NAMES[i][0]+ ": " + str(NAMES[i][3])) pos (NAMES[i][1], NAMES[i][2]) size 40 color "00fd"
 label start:
 
     #init block
@@ -63,34 +63,42 @@ label start:
     label fight:
         scene bg fight with dissolve
         "we a fighting right now"
-        #$rand = random.randint(0, 9)
-        $rand = 1
+        $rand = random.randint(0, 4)
         if rand == 0:
-            show scelet at right
+            show monster0 at right
             python:
-                #scelet
-                monster = Enemy(30, 10, 5, [1.0, 1.5, 1.0])
+                monster = Enemy(50, 10, 5, [1.5, 1.0, 1.0])
                 monster.messages[0] = "Вы втебали скелеут в черепуху, лол"
                 monster.messages[1] = "Минус ребра у скелета, лол"
                 monster.messages[2] = "Минус ноги, лол"
         elif rand == 1:
             show monster1 at right
             python:
-                monster = Enemy(50, 150, 15, [1.4, 1.2, 1.2])
-                monster.messages[0] = "Вы ударили мага в голову, лол"
-                monster.messages[1] = "Минус ребра у мага, лол"
-                monster.messages[2] = "Минус ноги, лол"
+                monster = Enemy(50, 15, 35, [1.3, 1.4, 1.0])
+                monster.messages[0] = "Голова"
+                monster.messages[1] = "Тело"
+                monster.messages[2] = "Ноги"
         elif rand == 2:
             show monster2 at right
             python:
                 monster = Enemy(100, 13, 15, [1.4, 1.2, 1.2])
-                monster.messages[0] = "Вы ударили мага в голову, лол"
-                monster.messages[1] = "Минус ребра у мага, лол"
-                monster.messages[2] = "Минус ноги, лол"
+                monster.messages[0] = "Голова"
+                monster.messages[1] = "Тело"
+                monster.messages[2] = "Ноги"
         elif rand == 3:
-            jump monster3
+            show monster3 at right
+            python:
+                monster = Enemy(100, 12, 0, [1.2, 1.2, 1.2])
+                monster.messages[0] = "Голова"
+                monster.messages[1] = "Тело"
+                monster.messages[2] = "Ноги"
         elif rand == 4:
-            jump monster4
+            show monster4 at right
+            python:
+                monster = Enemy(150, 14, 0, [1.4, 1.2, 1.2])
+                monster.messages[0] = "Голова"
+                monster.messages[1] = "Тело"
+                monster.messages[2] = "Ноги"
         elif rand == 5:
             jump monster5
         elif rand == 6:
